@@ -64,4 +64,6 @@ class CandidateController extends Controller
         return view('candidate.pages.applyedJobList',compact('applications'));
     }
 
+    
+
 }

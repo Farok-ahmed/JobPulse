@@ -24,9 +24,11 @@ use App\Http\Controllers\CandidatePanel\CandidateController;
 Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+Route::post('/contact-post',[HomeController::class,'contactStore'])->name('contactStore');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
 Route::get('/job',[JobController::class,'job'])->name('job');
 Route::get('/job/detail/{id}',[JobController::class,'jobDetail'])->name('jobDetail');
+
 
 Route::get('/dashboard',[CandidateController::class,'dashboard'])->middleware(['verified'])->name('dashboard');
 
@@ -46,6 +48,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
 
+
+    // Admin Job Route
     Route::get('/admin/job-list',[AdminController::class,'jobList'])->name('admin.jobList');
     Route::get('/admin/job-create',[AdminController::class,'jobCreate'])->name('admin.createJob');
     Route::post('/admin/job-post',[AdminController::class,'jobPost'])->name('admin.JobPost');
@@ -60,6 +64,11 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/admin/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // admin panel contact form list
+    Route::get('/contact-form',[AdminController::class,'contactFormList'])->name('contactFormList');
+    Route::get('/contact-form-view/{id}',[AdminController::class,'contactFormView'])->name('contactFormView');
+    Route::get('/contact-form-destory/{id}',[AdminController::class,'contactFormDestory'])->name('contactFormDestory');
 });
 Route::middleware(['auth','role:company'])->group(function () {
     Route::get('/company/dashboard',[CompanyController::class,'index'])->name('company.dashboard');

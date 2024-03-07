@@ -69,6 +69,12 @@
                         <span data-key="t-calendar">Blogs</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('contactFormList')}}">
+                        <i data-feather="calendar"></i>
+                        <span data-key="t-calendar">Contact Form </span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">

@@ -14,10 +14,19 @@ use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
 {
-    public function job()
+    public function job(Request $request)
     {
         $jobs = Job::where('status', 1)->with('jobType')->with('JobCategory')->orderBy('created_at', 'DESC')->paginate(10);
-        return view('frontend.pages.job', compact('jobs'));
+
+        // Jobs search
+
+        $job_title = $request->input('title');
+        $job_location = $request->input('location');
+
+        $searchs = Job::where('title','like','%$job_title')
+        ->where('location','like','%$job_location')->get();
+
+        return view('frontend.pages.job', compact('jobs','searchs'));
     }
     public function jobDetail(Request $request, $id)
     {
@@ -103,4 +112,15 @@ class JobController extends Controller
 
         return redirect()->back()->with('success', 'Job Successfuly Save');
     }
+
+    // // Job search Function Start
+
+    // public function search(Request $request){
+    //     $job_title = $request->get('job_title');
+    //     $job_location = $request->get('job_location');
+    //     $searchs = Job::select()->where('title','like','%$job_title')
+    //     ->where('location','like','%$job_location')->get();
+
+
+    // }
 }

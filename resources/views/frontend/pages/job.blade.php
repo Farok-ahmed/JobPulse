@@ -61,8 +61,7 @@
                                             </li>
                                             <li>
                                                 <i class='bx bx-stopwatch'></i>
-                                                {{ \Carbon\Carbon::parse($job->created_at)->diffInDays(\Carbon\Carbon::now()) }}
-                                                days ago
+                                                {{$job->created_at->diffForHumans()}}
                                             </li>
                                         </ul>
 

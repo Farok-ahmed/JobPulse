@@ -9,19 +9,20 @@
 							<p>Find Jobs, Employment & Career Opportunities</p>
 							<h1>Drop Resume & Get Your Desire Job!</h1>
 
-							<form class="banner-form">
+							<form action="{{route('job')}}" method="GET" class="banner-form">
+
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
-											<label for="exampleInputEmail1">Keyword:</label>
-											<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Job Title">
+											<label for="title">Keyword:</label>
+											<input type="text" name="title" class="form-control" id="title" placeholder="Job Title">
 										</div>
 									</div>
 
 									<div class="col-md-4">
 										<div class="form-group">
-											<label for="exampleInputEmail2">Location:</label>
-											<input type="text" class="form-control" id="exampleInputEmail2" placeholder="City or State">
+											<label for="location">Location:</label>
+											<input name="location" type="text" class="form-control" id="location" placeholder="City or State">
 										</div>
 									</div>
 
@@ -127,8 +128,8 @@
 										</a>
 										<p>
 											<i class='bx bx-stopwatch' ></i>
-                                            {{ \Carbon\Carbon::parse($job->created_at)->diffInHours(\Carbon\Carbon::now()) }}
-											 Hr Ago
+                                            {{$job->created_at->diffForHumans()}}
+
 										</p>
 									</div>
 								</div>

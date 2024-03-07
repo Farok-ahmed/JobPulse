@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\JobCategory;
@@ -167,6 +168,22 @@ class AdminController extends Controller
         $job = Job::find($id);
         $job->delete();
         return redirect()->back();
+    }
+
+    public function contactFormList(){
+        $contactForm = Contact::all();
+        return view('backend.pages.contactFormList',compact('contactForm'));
+    }
+    public function contactFormView(Request $request){
+        $contactView = Contact::where('id',$request->id)->first();
+
+        return view('backend.pages.contactFormView',compact('contactView'));
+    }
+
+    public function contactFormDestory($id){
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect()->back()->with('success','Successfully Deleted Data');
     }
 
 }

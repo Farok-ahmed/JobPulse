@@ -244,7 +244,7 @@
     <script
         src="{{ asset('backend/assets') }}/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js">
     </script>
-    
+
     <!-- Required datatable js -->
     <script src="{{ asset('backend/assets') }}/libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('backend/assets') }}/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -263,13 +263,16 @@
     <!-- dashboard init -->
     <script src="{{ asset('backend/assets/') }}/js/pages/dashboard.init.js"></script>
 
-
+    <script src="{{ asset('backend/assets/') }}/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
     <!-- Responsive examples -->
     <script src="{{ asset('backend/assets') }}/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('backend/assets') }}/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
 
     <script src="{{ asset('backend/assets') }}/js/app.js"></script>
+
+     <!-- init js -->
+     <script src="{{ asset('backend/assets') }}/js/pages/form-editor.init.js"></script>
 
 </body>
 

@@ -57,7 +57,7 @@
                                         <td>{{$application->job->title}}</td>
                                         <td >{{$application->job->User->name}}</td>
                                         <td>{{$application->status}}</td>
-                                        <td>{{\Carbon\Carbon::parse($application->created_at)->format('d M,Y')}}</td>
+                                        <td>{{$application->created_at->diffForHumans()}}</td>
                                         <td>
                                             <a class="btn btn-primary " href="{{route('admin.JobEdit',$application->id)}}">Edit</a>
                                             <a class="btn btn-danger" href="{{url('admin/job-delete/'.$application->id)}}">Delete</a>

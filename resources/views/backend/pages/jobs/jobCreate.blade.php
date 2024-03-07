@@ -80,10 +80,11 @@
                                                 @endif
                                             </select>
                                         </div>
+
+
                                         <div class="mb-3">
                                             <label for="description" class="form-label">Description</label>
-                                            <input class="form-control" name="description" type="text" value=""
-                                                id="description">
+                                            <textarea  class="form-control" name="description" id="ckeditor-classic" ></textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label for="benefits" class="form-label">Benefits</label>
