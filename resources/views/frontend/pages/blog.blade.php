@@ -30,226 +30,49 @@
                     </div>
 
                     <div class="row">
+                        @foreach ($blogList as $blog )
                         <div class="col-lg-4 col-sm-6">
+
                             <div class="blog-card">
                                 <div class="blog-img">
                                     <a href="blog-details.html">
-                                        <img src="{{asset('frontend/assets/')}}/img/blog/1.jpg" alt="blog image">
+                                        <img src="{{asset('/'.$blog->image.'')}}" alt="blog image">
                                     </a>
                                 </div>
                                 <div class="blog-text">
                                     <ul>
                                         <li>
                                             <i class='bx bxs-user'></i>
-                                            Admin
+                                            {{$blog->user->name}}
                                         </li>
                                         <li>
                                             <i class='bx bx-calendar'></i>
-                                            7 Feb, 2021
+                                            {{\Carbon\Carbon::parse($blog->created_at)->format('d M,Y')}}
                                         </li>
                                     </ul>
 
                                     <h3>
                                         <a href="blog-details.html">
-                                            How to Indroduce in Yourself in Job Interview?
+                                            {{$blog->title}}
                                         </a>
                                     </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                    <p>{{$blog->excerpt}}</p>
 
-                                    <a href="blog-details.html" class="blog-btn">
+                                    <a href="" class="blog-btn">
                                         Read More
                                         <i class='bx bx-plus bx-spin'></i>
                                     </a>
                                 </div>
                             </div>
+
                         </div>
+                        @endforeach
 
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="blog-card">
-                                <div class="blog-img">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('frontend/assets/')}}/img/blog/2.jpg" alt="blog image">
-                                    </a>
-                                </div>
-                                <div class="blog-text">
-                                    <ul>
-                                        <li>
-                                            <i class='bx bxs-user'></i>
-                                            Admin
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-calendar'></i>
-                                            7 Feb, 2021
-                                        </li>
-                                    </ul>
-
-                                    <h3>
-                                        <a href="blog-details.html">
-                                            Looking for Highly Motivated Product to Build
-                                        </a>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-
-                                    <a href="blog-details.html" class="blog-btn">
-                                        Read More
-                                        <i class='bx bx-plus bx-spin'></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="blog-card">
-                                <div class="blog-img">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('frontend/assets/')}}/img/blog/3.jpg" alt="blog image">
-                                    </a>
-                                </div>
-                                <div class="blog-text">
-                                    <ul>
-                                        <li>
-                                            <i class='bx bxs-user'></i>
-                                            Admin
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-calendar'></i>
-                                            7 Feb, 2021
-                                        </li>
-                                    </ul>
-
-                                    <h3>
-                                        <a href="blog-details.html">
-                                            The Reason Why Software Develope is the Best Job
-                                        </a>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-
-                                    <a href="blog-details.html" class="blog-btn">
-                                        Read More
-                                        <i class='bx bx-plus bx-spin'></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="blog-card">
-                                <div class="blog-img">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('frontend/assets/')}}/img/blog/4.jpg" alt="blog image">
-                                    </a>
-                                </div>
-                                <div class="blog-text">
-                                    <ul>
-                                        <li>
-                                            <i class='bx bxs-user'></i>
-                                            Admin
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-calendar'></i>
-                                            7 Feb, 2021
-                                        </li>
-                                    </ul>
-
-                                    <h3>
-                                        <a href="blog-details.html">
-                                            Economy Growth is Being Increased by IT Sectors
-                                        </a>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-
-                                    <a href="blog-details.html" class="blog-btn">
-                                        Read More
-                                        <i class='bx bx-plus bx-spin'></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="blog-card">
-                                <div class="blog-img">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('frontend/assets/')}}/img/blog/5.jpg" alt="blog image">
-                                    </a>
-                                </div>
-                                <div class="blog-text">
-                                    <ul>
-                                        <li>
-                                            <i class='bx bxs-user'></i>
-                                            Admin
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-calendar'></i>
-                                            7 Feb, 2021
-                                        </li>
-                                    </ul>
-
-                                    <h3>
-                                        <a href="blog-details.html">
-                                            Tips for Making Your Resume Stand Out
-                                        </a>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-
-                                    <a href="blog-details.html" class="blog-btn">
-                                        Read More
-                                        <i class='bx bx-plus bx-spin'></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="blog-card">
-                                <div class="blog-img">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('frontend/assets/')}}/img/blog/6.jpg" alt="blog image">
-                                    </a>
-                                </div>
-                                <div class="blog-text">
-                                    <ul>
-                                        <li>
-                                            <i class='bx bxs-user'></i>
-                                            Admin
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-calendar'></i>
-                                            7 Feb, 2021
-                                        </li>
-                                    </ul>
-
-                                    <h3>
-                                        <a href="blog-details.html">
-                                            10 Things You Should Know Before Apply
-                                        </a>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-
-                                    <a href="blog-details.html" class="blog-btn">
-                                        Read More
-                                        <i class='bx bx-plus bx-spin'></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                    <i class='bx bx-chevrons-left bx-fade-left'></i>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link active" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <i class='bx bx-chevrons-right bx-fade-right'></i>
-                                </a>
-                            </li>
+                            {{ $blogList->links() }}
                         </ul>
                     </nav>
                 </div>

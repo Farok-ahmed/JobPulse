@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
 use App\Models\Job;
-use App\Models\JobCategory;
+use App\Models\Blog;
 use App\Models\User;
+use App\Models\Contact;
+use App\Models\JobCategory;
 use Illuminate\Http\Request;
+use App\Models\ContactPageInformation;
 
 class HomeController extends Controller
 {
@@ -20,11 +22,52 @@ class HomeController extends Controller
         return view('frontend.pages.home',compact('jobCategories','jobCountCategories','jobs'));
     }
     public function about(){
+
         return view('frontend.pages.about');
     }
+
+    // Contact Page
+
+
     public function contact(){
-        return view('frontend.pages.contact');
+        $contactInformation = ContactPageInformation::first();
+        return view('frontend.pages.contact',compact('contactInformation'));
     }
+    public function contactPageInformationCreate(){
+        $contactInformation = ContactPageInformation::first();
+        return view('backend.pages.contactPage.contactPageCreate',compact('contactInformation'));
+    }
+    public function contactPageInformationStore(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'email'=>'required',
+            'email2'=>'required',
+            'phone'=>'required',
+            'phone2'=>'required',
+            'location'=>'required',
+        ]);
+        $obj = ContactPageInformation::where('id',1)->first();
+        $obj->title = $request->title;
+        $obj->email = $request->email;
+        $obj->email2 = $request->email2;
+        $obj->phone = $request->phone;
+        $obj->phone2 = $request->phone2;
+        $obj->location = $request->location;
+        $obj->update();
+
+        return redirect()->back()->with('success','Contact Page information Successfuly Add');
+    }
+    public function contactPageInformationEdit($id){
+        return view('backend.pages.contactPage.contactPageCreate');
+    }
+
+
+
+
+
+
+
+
     public function contactStore(Request $request){
         $request->validate([
             'name'=>'required',
@@ -45,7 +88,9 @@ class HomeController extends Controller
 
 
     public function blog(){
-        return view('frontend.pages.blog');
+        $blogList = Blog::orderBy('created_at','ASC')->with('User')->paginate(6);
+        //dd($blogList);
+        return view('frontend.pages.blog',compact('blogList'));
     }
 
 }

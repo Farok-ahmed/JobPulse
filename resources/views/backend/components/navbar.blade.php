@@ -64,7 +64,7 @@
                 </li>
 
                 <li>
-                    <a href="apps-calendar.html">
+                    <a href="{{route('blog.create')}}">
                         <i data-feather="calendar"></i>
                         <span data-key="t-calendar">Blogs</span>
                     </a>
@@ -82,7 +82,7 @@
                         <span data-key="t-contacts">Pages</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="apps-contacts-grid.html" data-key="t-user-grid">User Grid</a></li>
+                        <li><a href="{{route('contactInformationCreate')}}" data-key="t-user-grid">Contact Page</a></li>
                         <li><a href="apps-contacts-list.html" data-key="t-user-list">User List</a></li>
                         <li><a href="apps-contacts-profile.html" data-key="t-profile">Profile</a></li>
                     </ul>

@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class ContactPageInformation extends Model
 {
     use HasFactory;
+    protected $fillable = ['title','email','email2','phone','phone2','location'];
 }

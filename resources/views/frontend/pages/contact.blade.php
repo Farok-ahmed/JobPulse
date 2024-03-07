@@ -4,10 +4,10 @@
     <section class="page-title title-bg23">
         <div class="d-table">
             <div class="d-table-cell">
-                <h2>Contact Us</h2>
+                <h2>{{$contactInformation->title}}</h2>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{route('home')}}">Home</a>
                     </li>
                     <li>Contact Us</li>
                 </ul>
@@ -32,13 +32,13 @@
                                 <i class='bx bx-phone-call'></i>
                                 <ul>
                                     <li>
-                                        <a href="tel:+145664474574">
-                                            +1-456-644-7457
+                                        <a href="tel:{{$contactInformation->phone}}">
+                                            {{$contactInformation->phone}}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="tel:17459674567">
-                                            +1-745-967-4567
+                                        <a href="tel:{{$contactInformation->phone2}}">
+                                            {{$contactInformation->phone2}}
                                         </a>
                                     </li>
                                 </ul>
@@ -50,13 +50,13 @@
                                 <i class='bx bx-mail-send'></i>
                                 <ul>
                                     <li>
-                                        <a href="mailto:info@jovie.com">
-                                            info@jovie.com
+                                        <a href="mailto:{{$contactInformation->email}}">
+                                            {{$contactInformation->email}}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="mailto:hello@jovie.com">
-                                            hello@jovie.com
+                                        <a href="mailto:{{$contactInformation->email2}}">
+                                            {{$contactInformation->email2}}
                                         </a>
                                     </li>
                                 </ul>
@@ -68,11 +68,9 @@
                                 <i class='bx bx-location-plus'></i>
                                 <ul>
                                     <li>
-                                        123, Denver, USA
+                                        {{$contactInformation->location}}
                                     </li>
-                                    <li>
-                                        Street view 3/B, USA
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>

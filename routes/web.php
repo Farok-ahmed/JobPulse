@@ -5,6 +5,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminPanel\AdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CompanyPanel\CompanyController;
 use App\Http\Controllers\CandidatePanel\CandidateController;
 
@@ -28,6 +29,7 @@ Route::post('/contact-post',[HomeController::class,'contactStore'])->name('conta
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
 Route::get('/job',[JobController::class,'job'])->name('job');
 Route::get('/job/detail/{id}',[JobController::class,'jobDetail'])->name('jobDetail');
+
 
 
 Route::get('/dashboard',[CandidateController::class,'dashboard'])->middleware(['verified'])->name('dashboard');
@@ -69,7 +71,20 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/contact-form',[AdminController::class,'contactFormList'])->name('contactFormList');
     Route::get('/contact-form-view/{id}',[AdminController::class,'contactFormView'])->name('contactFormView');
     Route::get('/contact-form-destory/{id}',[AdminController::class,'contactFormDestory'])->name('contactFormDestory');
+
+    Route::get('/contact-page-information',[HomeController::class,'contactPageInformationCreate'])->name('contactInformationCreate');
+    Route::post('/contact-page-information',[HomeController::class,'contactPageInformationStore'])->name('contactInformationStore');
+    Route::get('/contact-page-information/{id}',[HomeController::class,'contactPageInformationEdit'])->name('contactInformationEdit');
+
+    // blog page create
+    Route::get('admin/blog-create',[BlogController::class,'blogCreate'])->name('blog.create');
+    Route::post('admin/blog-store',[BlogController::class,'blogStore'])->name('blog.store');
 });
+
+
+// Compnay panel route
+
+
 Route::middleware(['auth','role:company'])->group(function () {
     Route::get('/company/dashboard',[CompanyController::class,'index'])->name('company.dashboard');
     Route::get('/company/profile',[CompanyController::class,'profile'])->name('company.profile');
