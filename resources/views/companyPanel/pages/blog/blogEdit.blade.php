@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+@extends('companyPanel.layout.app')
 @section('contents')
     <div class="page-content">
         <div class="container-fluid">
@@ -16,9 +16,9 @@
                             <p class="card-title-desc">Here are examples of <code>.form-control</code> applied to each
                                 textual HTML5 <code>&lt;input&gt;</code> <code>type</code>.</p>
                         </div>
-                        <form action="{{ route('adminBlogUpdate',$blog->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('BlogUpdate',$blog->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            
+
                             <div class="card-body p-4">
 
                                 <div class="row">

@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\CompanyPanel;
 
 use App\Models\Job;
+use App\Models\Blog;
 use App\Models\User;
 use App\Models\JobType;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
+use App\Models\JobApplication;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\JobApplication;
 
 class CompanyController extends Controller
 {
@@ -202,6 +204,83 @@ class CompanyController extends Controller
         $JobApplication->status = $request->status;
         $JobApplication->save();
         return redirect()->route('company.jobApplication')->with('status','Job Update Successfull');
+    }
+
+
+    public function blogCreate(){
+        return view('companyPanel.pages.blog.blogCreate');
+    }
+
+    public function blogList(){
+        $id = Auth::user()->id;
+        $blogList = Blog::where('user_id',Auth::user()->id)->get();
+        return view('companyPanel.pages.blog.blogList',compact('blogList'));
+    }
+
+    public function blogStore(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'excerpt'=>'required',
+            'description'=>'required',
+            'image'=>'required|image',
+        ]);
+
+        $img = $request->file('image');
+        $t = time();
+        $file_name = $img->getClientOriginalName();
+        $img_name = "{$t}-{$file_name}";
+        $img_url = "uploads/{$img_name}";
+        $img->move(public_path('uploads'),$img_name);
+
+
+        $blogStore = new Blog();
+        $blogStore->title=$request->title;
+        $blogStore->excerpt=$request->excerpt;
+        $blogStore->description=$request->description;
+        $blogStore->image = $img_url;
+        $blogStore->user_id = Auth::user()->id;
+        $blogStore->save();
+
+        return redirect()->back()->with('success','Blog Succssfully Post');
+    }
+
+    public function blogEdit($id){
+        $blog = Blog::where('id',$id)->first();
+        return view('companyPanel.pages.blog.blogEdit',compact('blog'));
+    }
+    public function blogUpdate(Request $request,$id){
+
+        if($request->hasFile('image')){
+            $img = $request->file('image');
+            $t = time();
+            $file_name = $img->getClientOriginalName();
+            $img_name = "{$t}-{$file_name}";
+            $img_url = "uploads/{$img_name}";
+
+            $img->move(public_path('uploads'),$img_name);
+            $filPath = $request->input('file_path');
+            File::delete($filPath);
+
+            $blogUpdate = Blog::find($id);
+            $blogUpdate->title  =$request->title;
+            $blogUpdate->excerpt  =$request->excerpt;
+            $blogUpdate->description  =$request->description;
+            $blogUpdate->image = $img_url;
+            $blogUpdate->save();
+           }else{
+
+            $blogUpdate = Blog::find($id);
+            $blogUpdate->title  =$request->title;
+            $blogUpdate->excerpt  =$request->excerpt;
+            $blogUpdate->description  =$request->description;
+            $blogUpdate->save();
+           }
+           return redirect()->back()->with('success','Blog post Successfuly Update');
+    }
+    public function BlogDestory($id){
+        $blog = Blog::where('id',$id)->first();
+        $blog->delete();
+        return redirect()->back()->with('success','Blog post Successfuly Delete');
     }
 
 }

@@ -81,7 +81,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::post('admin/blog-store',[BlogController::class,'blogStore'])->name('blog.store');
     Route::get('admin/blog-list',[BlogController::class,'blogAdminList'])->name('blogAdminLIst');
     Route::get('admin/blog-edit/{id}',[BlogController::class,'blogAdminEdit'])->name('adminBlogEdit');
-    Route::get('admin/blog-update/{id}',[BlogController::class,'blogAdminUpdate'])->name('adminBlogUpdate');
+    Route::post('admin/blog-update/{id}',[BlogController::class,'blogAdminUpdate'])->name('adminBlogUpdate');
+    Route::get('admin/blog-destory/{id}',[BlogController::class,'BlogAdminPanelDestory'])->name('BlogAdminPanelDestory');
 });
 
 
@@ -102,6 +103,15 @@ Route::middleware(['auth','role:company'])->group(function () {
     Route::get('/company/job-application',[CompanyController::class,'jobApplication'])->name('company.jobApplication');
     Route::get('/company/job-application-edit/{id}',[CompanyController::class,'jobApplicationEdit'])->name('company.jobApplicationEdit');
     Route::post('/company/job-application-update/{id}',[CompanyController::class,'jobApplicationUpdate'])->name('company.jobApplicationUpdate');
+
+
+      // blog page create
+      Route::get('company/blog-create',[CompanyController::class,'blogCreate'])->name('blogCreate');
+      Route::post('company/blog-store',[CompanyController::class,'blogStore'])->name('blogStore');
+      Route::get('company/blog-list',[CompanyController::class,'blogList'])->name('blogList');
+      Route::get('company/blog-edit/{id}',[CompanyController::class,'blogEdit'])->name('BlogEdit');
+      Route::post('company/blog-update/{id}',[CompanyController::class,'blogUpdate'])->name('BlogUpdate');
+      Route::get('company/blog-destory/{id}',[CompanyController::class,'BlogDestory'])->name('BlogDestory');
 
 });
 

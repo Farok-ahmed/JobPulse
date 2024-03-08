@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+@extends('companyPanel.layout.app')
 @section('contents')
     <div class="page-content">
         <div class="container-fluid">
@@ -16,9 +16,8 @@
                             <p class="card-title-desc">Here are examples of <code>.form-control</code> applied to each
                                 textual HTML5 <code>&lt;input&gt;</code> <code>type</code>.</p>
                         </div>
-                        <form action="{{ route('adminBlogUpdate',$blog->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('blogStore') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            
                             <div class="card-body p-4">
 
                                 <div class="row">
@@ -26,12 +25,12 @@
                                         <div>
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="form-label">Title</label>
-                                                <input class="form-control" name="title" type="text" value="{{$blog->title}}"
+                                                <input class="form-control" name="title" type="text" value=""
                                                     id="example-text-input">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="vacancy" class="form-label">Excerpt</label>
-                                                <input class="form-control" name="excerpt" type="text" value="{{$blog->excerpt}}"
+                                                <input class="form-control" name="excerpt" type="text" value=""
                                                     id="vacancy">
                                             </div>
 
@@ -39,8 +38,8 @@
                                                 <label for="image" class="form-label">Blog Image</label>
                                                 <input class="form-control" name="image" type="file" value=""
                                                     id="selectImage">
-                                                <img id="preview" src="{{asset('/'.$blog->image.'')}}" alt="your image" class="mt-3 w-7 h-auto"
-                                                     />
+                                                <img id="preview" src="#" alt="your image" class="mt-3 w-7 h-auto"
+                                                    style="display:none;" />
 
                                             </div>
 
@@ -50,13 +49,13 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="description" class="form-label">Description</label>
-                                            <textarea class=" form-control" name="description" type="text" value="{{$blog->description}}"id="ckeditor-classic"></textarea>
+                                            <textarea class=" form-control" name="description" type="text" value=""id="ckeditor-classic"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div> <!-- end col -->

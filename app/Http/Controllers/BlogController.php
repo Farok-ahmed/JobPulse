@@ -47,7 +47,8 @@ class BlogController extends Controller
     }
 
     public function blogAdminEdit($id){
-        return view('backend.pages.blog.blogEdit');
+        $blog = Blog::where('id',$id)->first();
+        return view('backend.pages.blog.blogEdit',compact('blog'));
     }
     public function blogAdminUpdate(Request $request,$id){
 
@@ -76,5 +77,11 @@ class BlogController extends Controller
             $blogUpdate->description  =$request->description;
             $blogUpdate->save();
            }
+           return redirect()->back()->with('success','Blog post Successfuly Update');
+    }
+    public function BlogAdminPanelDestory($id){
+        $blog = Blog::where('id',$id)->first();
+        $blog->delete();
+        return redirect()->back()->with('success','Blog post Successfuly Delete');
     }
 }

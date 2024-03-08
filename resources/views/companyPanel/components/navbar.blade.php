@@ -32,13 +32,18 @@
                 </li>
 
 
-
                 <li>
-                    <a href="apps-calendar.html">
-                        <i data-feather="calendar"></i>
-                        <span data-key="t-calendar">Blogs</span>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="message-square"></i>
+                        <span data-key="t-chat">Blogs</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('blogList')}}" data-key="t-inbox">All Blogs</a></li>
+                        <li><a href="{{route('blogCreate')}}" data-key="t-inbox">Blog Create</a></li>
+
+                    </ul>
                 </li>
+
 
                 <li><a class="dropdown-item" href="{{route('company.profile')}}"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profile</a></li>
                 <li>

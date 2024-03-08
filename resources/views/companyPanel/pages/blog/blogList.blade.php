@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+@extends('companyPanel.layout.app')
 @section('contents')
     <div class="page-content">
         <div class="container-fluid">
@@ -36,7 +36,7 @@
                                     default, so all you need to do to use it with your own tables is to call
                                     the construction function: <code>$().DataTable();</code>.
                                 </p></div>
-                            <div><a class="btn btn-primary" href="{{route('blog.create')}}">Create Blog</a></div>
+                            <div><a class="btn btn-primary" href="{{route('blogCreate')}}">Create Blog</a></div>
                         </div>
                         <div class="card-body">
 
@@ -54,7 +54,7 @@
 
 
                                 <tbody>
-                                    @foreach ($blogAdmiList as $key=>$blog )
+                                    @foreach ($blogList as $key=>$blog )
                                     <tr>
                                         <td>{{++$key}}</td>
                                         <td>{{$blog->user->name}}</td>
@@ -63,8 +63,8 @@
                                         <td><img style="width: 50px" src="{{asset('/'.$blog->image.'')}}" alt=""></td>
                                         <td>{{$blog->created_at->diffForHumans()}}</td>
                                         <td>
-                                            <a class="btn btn-primary " href="{{route('adminBlogEdit',$blog->id)}}">Edit</a>
-                                            <a class="btn btn-danger" href="{{route('BlogAdminPanelDestory',$blog->id)}}">Delete</a>
+                                            <a class="btn btn-primary " href="{{route('BlogEdit',$blog->id)}}">Edit</a>
+                                            <a class="btn btn-danger" href="{{route('BlogDestory',$blog->id)}}">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
