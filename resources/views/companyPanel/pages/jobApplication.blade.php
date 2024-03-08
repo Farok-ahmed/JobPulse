@@ -56,7 +56,8 @@
                                         <td>{{$apply->user->name}}</td>
                                         <td>{{$apply->Job->title}}</td>
                                         <td >{{$apply->Job->user->name}}</td>
-                                        <td>{{$apply->user->cv}}</td>
+
+                                        <td><a href="{{url('cv/download/'.$apply->id)}}">Download</a></td>
                                         <td>{{$apply->status}}</td>
                                         <td>{{\Carbon\Carbon::parse($apply->created_at)->format('d M,Y')}}</td>
                                         <td>

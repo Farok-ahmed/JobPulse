@@ -43,6 +43,12 @@
 
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Upload Your CV</label>
+                        <input type="file" id="cv" name="cv" value="{{$user->cv}}" class="form-control" placeholder="image">
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <button type="submit" class="account-btn">Save</button>
                 </div>

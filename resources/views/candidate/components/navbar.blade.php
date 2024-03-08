@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li>
-                <a href="resume.html">
+                <a href="{{route('resume')}}">
                     <i class='bx bxs-file-doc'></i>
                     My Resume
                 </a>

@@ -21,7 +21,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'cv'
     ];
     public function Job(){
         return $this->hasMany(Job::class);

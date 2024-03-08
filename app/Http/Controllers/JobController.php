@@ -11,6 +11,7 @@ use App\Models\JobApplication;
 use App\Mail\JobNotificationEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Response;
 
 class JobController extends Controller
 {
@@ -34,6 +35,12 @@ class JobController extends Controller
             ->with('User')
             ->with('jobType')->with('JobCategory')->first();
         return view('frontend.pages.jobDetails', compact('jobs'));
+    }
+
+    public function downloadCV($id){
+        $cvUpload = JobApplication::where('id',$id)->first();
+        $filepath = public_path("uploads/{$cvUpload->cv}");
+        return Response::download($filepath);
     }
 
     public function applyJob(Request $request)
@@ -62,6 +69,9 @@ class JobController extends Controller
         if ($jobApplicationCount > 0) {
             return redirect()->back()->with('failed', 'You alread Applied On this Job');
         }
+        if(Auth::user()->cv == 'no cv'){
+            return redirect()->back()->with('failed','Upload your CV First in Profile Page');
+        }else{
 
         // Create a new job application
         $application = new JobApplication();
@@ -69,6 +79,7 @@ class JobController extends Controller
         $application->employer_id = $request->employer_id;
         $application->user_id = Auth::id();
         $application->applied_date = now();
+        $application->cv = Auth::user()->cv;
         $application->save();
 
         // job notification Email to Employee
@@ -81,6 +92,7 @@ class JobController extends Controller
         Mail::to($employer->email)->send(new JobNotificationEmail($mailData));
 
         return redirect()->back()->with('success', 'You have successfully applied.');
+    }
     }
 
     public function saveJobList()

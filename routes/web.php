@@ -37,6 +37,7 @@ Route::get('/dashboard',[CandidateController::class,'dashboard'])->middleware(['
 Route::middleware('auth')->group(function () {
 
     Route::get('candidate/profile',[CandidateController::class,'candidateProfile'])->name('candidateProfile');
+    Route::get('candidate/resume',[CandidateController::class,'resume'])->name('resume');
     Route::put('candidate/profile',[CandidateController::class,'update'])->name('profileUpdate');
 
     Route::post('job/apply-job/{id}',[JobController::class,'applyJob'])->name('applyJob');
@@ -103,6 +104,7 @@ Route::middleware(['auth','role:company'])->group(function () {
     Route::get('/company/job-application',[CompanyController::class,'jobApplication'])->name('company.jobApplication');
     Route::get('/company/job-application-edit/{id}',[CompanyController::class,'jobApplicationEdit'])->name('company.jobApplicationEdit');
     Route::post('/company/job-application-update/{id}',[CompanyController::class,'jobApplicationUpdate'])->name('company.jobApplicationUpdate');
+    Route::get('cv/download/{id}',[JobController::class,'downloadCV'])->name('downloadCV');
 
 
       // blog page create
