@@ -19,7 +19,8 @@ class HomeController extends Controller
 
         $jobs = Job::where('status',1)->where('features_at',1)
         ->with('jobType')->take(6)->get();
-        return view('frontend.pages.home',compact('jobCategories','jobCountCategories','jobs'));
+        $blogList = Blog::orderBy('created_at','DESC')->take(3)->get();
+        return view('frontend.pages.home',compact('jobCategories','jobCountCategories','jobs','blogList'));
     }
     public function about(){
 
@@ -80,10 +81,18 @@ class HomeController extends Controller
     }
 
 
-    public function blog(){
+    public function blog(Request $request){
         $blogList = Blog::orderBy('created_at','ASC')->with('User')->paginate(6);
         //dd($blogList);
         return view('frontend.pages.blog',compact('blogList'));
+    }
+
+    public function blogSingle($id){
+        $blogSingle = Blog::where('id',$id)->first();
+
+        $latestBlogs = Blog::orderBy('created_at','DESC')->take(4)->get();
+
+        return view('frontend.pages.blogSingle',compact('blogSingle','latestBlogs'));
     }
 
 }

@@ -58,7 +58,7 @@
                                     </h3>
                                     <p>{{$blog->excerpt}}</p>
 
-                                    <a href="" class="blog-btn">
+                                    <a href="{{route('blogSingle',$blog->id)}}" class="blog-btn">
                                         Read More
                                         <i class='bx bx-plus bx-spin'></i>
                                     </a>

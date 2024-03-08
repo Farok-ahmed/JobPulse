@@ -18,19 +18,31 @@
 
                     </div>
                 </div>
-        </div>
+            </div>
             <!-- end page title -->
 
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ Session::get('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+                        @if (Session::has('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ Session::get('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
                         <div class="card-header d-flex justify-content-between">
-                            <div><h4 class="card-title">Default Datatable</h4>
-                                <p class="card-title-desc">DataTables has most features enabled by
-                                    default, so all you need to do to use it with your own tables is to call
-                                    the construction function: <code>$().DataTable();</code>.
-                                </p></div>
-                            <div><a class="btn btn-primary" href="{{route('admin.createJob')}}">Create Job</a></div>
+                            <div>
+                                <h4 class="card-title">Default Datatable</h4>
+                            </div>
+                            <div><a class="btn btn-primary" href="{{ route('admin.createJob') }}">Create Job</a></div>
                         </div>
                         <div class="card-body">
 
@@ -49,20 +61,22 @@
 
 
                                 <tbody>
-                                    @foreach ($applicationLists as $key=>$application )
-                                    <tr>
-                                        <td>{{++$key}}</td>
-                                        <td>{{$application->user->name}}</td>
+                                    @foreach ($applicationLists as $key => $application)
+                                        <tr>
+                                            <td>{{ ++$key }}</td>
+                                            <td>{{ $application->user->name }}</td>
 
-                                        <td>{{$application->job->title}}</td>
-                                        <td >{{$application->job->User->name}}</td>
-                                        <td>{{$application->status}}</td>
-                                        <td>{{$application->created_at->diffForHumans()}}</td>
-                                        <td>
-                                            <a class="btn btn-primary " href="{{route('admin.JobEdit',$application->id)}}">Edit</a>
-                                            <a class="btn btn-danger" href="{{url('admin/job-delete/'.$application->id)}}">Delete</a>
-                                        </td>
-                                    </tr>
+                                            <td>{{ $application->job->title }}</td>
+                                            <td>{{ $application->job->User->name }}</td>
+                                            <td>{{ $application->status }}</td>
+                                            <td>{{ $application->created_at->diffForHumans() }}</td>
+                                            <td>
+                                                <a class="btn btn-primary "
+                                                    href="{{ route('admin.JobEdit', $application->id) }}">Edit</a>
+                                                <a class="btn btn-danger"
+                                                    href="{{ route('admin.jobapplicationDestory',$application->id) }}">Delete</a>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -73,6 +87,4 @@
             </div> <!-- end row -->
         </div>
     </div>
-
-
 @endsection

@@ -25,39 +25,22 @@
                     <h3>For Candidate</h3>
                     <ul>
                         <li>
-                            <a href="job-grid.html">
+                            <a href="{{route('job')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Browse Jobs
                             </a>
                         </li>
                         <li>
-                            <a href="account.html">
+                            <a href="{{route('candidateProfile')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Account
                             </a>
                         </li>
+
                         <li>
-                            <a href="catagories.html">
-                                <i class='bx bx-chevrons-right bx-tada'></i>
-                                Browse Categories
-                            </a>
-                        </li>
-                        <li>
-                            <a href="resume.html">
+                            <a href="{{route('resume')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Resume
-                            </a>
-                        </li>
-                        <li>
-                            <a href="job-list.html">
-                                <i class='bx bx-chevrons-right bx-tada'></i>
-                                Job List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="sign-up.html">
-                                <i class='bx bx-chevrons-right bx-tada'></i>
-                                Sign Up
                             </a>
                         </li>
                     </ul>
@@ -69,37 +52,25 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li>
-                            <a href="index.html">
+                            <a href="{{route('home')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="about.html">
+                            <a href="{{route('about')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 About
                             </a>
                         </li>
                         <li>
-                            <a href="faq.html">
+                            <a href="{{route('blog')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
-                                FAQ
+                                Blog
                             </a>
                         </li>
                         <li>
-                            <a href="pricing.html">
-                                <i class='bx bx-chevrons-right bx-tada'></i>
-                                Pricing
-                            </a>
-                        </li>
-                        <li>
-                            <a href="privacy.html">
-                                <i class='bx bx-chevrons-right bx-tada'></i>
-                                Privacy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.html">
+                            <a href="{{route('contact')}}">
                                 <i class='bx bx-chevrons-right bx-tada'></i>
                                 Contact
                             </a>

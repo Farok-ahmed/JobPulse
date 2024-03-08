@@ -49,6 +49,15 @@ class AdminController extends Controller
         // dd($applicationLists);
         return view('backend.pages.jobs.application',compact('applicationLists'));
     }
+    public function jobapplicationDestory($id){
+        $application = JobApplication::find($id);
+       if($application){
+        $application->delete();
+        return redirect()->back()->with('success','Successfuly Remove Job Application');
+       }else{
+        return redirect()->back()->with('error','Job not found.');
+       }
+    }
 
     public function jobCreate(){
         $jobCategories = JobCategory::orderBy('name','ASC')->where('status',1)->get();
@@ -166,9 +175,14 @@ class AdminController extends Controller
 
     public function jobDestory($id){
         $job = Job::find($id);
+       if($job){
         $job->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','Successfuly Remove Job Application');
+       }else{
+        return redirect()->back()->with('error','Job not found.');
+       }
     }
+
 
     public function contactFormList(){
         $contactForm = Contact::all();

@@ -27,6 +27,7 @@ Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::post('/contact-post',[HomeController::class,'contactStore'])->name('contactStore');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
+Route::get('/blog/single/{id}',[HomeController::class,'blogSingle'])->name('blogSingle');
 Route::get('/job',[JobController::class,'job'])->name('job');
 Route::get('/job/detail/{id}',[JobController::class,'jobDetail'])->name('jobDetail');
 
@@ -61,6 +62,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/job-delete/{id}',[AdminController::class,'jobDestory'])->name('admin.jobDelete');
 
     Route::get('/admin/applications',[AdminController::class,'ApplicationList'])->name('admin.applications');
+    Route::get('/admin/applications/{id}',[AdminController::class,'jobapplicationDestory'])->name('admin.jobapplicationDestory');
 
     Route::get('/admin/user-list',[AdminController::class,'userList'])->name('admin.userList');
     Route::get('/admin/company-list',[AdminController::class,'companyList'])->name('admin.companyList');
