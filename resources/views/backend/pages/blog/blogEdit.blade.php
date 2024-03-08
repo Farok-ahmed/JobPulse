@@ -16,8 +16,9 @@
                             <p class="card-title-desc">Here are examples of <code>.form-control</code> applied to each
                                 textual HTML5 <code>&lt;input&gt;</code> <code>type</code>.</p>
                         </div>
-                        <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('adminBlogUpdate',$blogAdmiList->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-body p-4">
 
                                 <div class="row">
@@ -38,8 +39,8 @@
                                                 <label for="image" class="form-label">Blog Image</label>
                                                 <input class="form-control" name="image" type="file" value=""
                                                     id="selectImage">
-                                                <img id="preview" src="#" alt="your image" class="mt-3 w-7 h-auto"
-                                                    style="display:none;" />
+                                                <img id="preview" src="{{asset('/'.$blog->image.'')}}" alt="your image" class="mt-3 w-7 h-auto"
+                                                     />
 
                                             </div>
 
@@ -55,7 +56,7 @@
                                 </div>
                             </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
             </div> <!-- end col -->

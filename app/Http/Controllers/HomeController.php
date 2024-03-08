@@ -61,13 +61,6 @@ class HomeController extends Controller
         return view('backend.pages.contactPage.contactPageCreate');
     }
 
-
-
-
-
-
-
-
     public function contactStore(Request $request){
         $request->validate([
             'name'=>'required',

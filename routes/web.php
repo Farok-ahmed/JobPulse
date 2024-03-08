@@ -79,6 +79,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
     // blog page create
     Route::get('admin/blog-create',[BlogController::class,'blogCreate'])->name('blog.create');
     Route::post('admin/blog-store',[BlogController::class,'blogStore'])->name('blog.store');
+    Route::get('admin/blog-list',[BlogController::class,'blogAdminList'])->name('blogAdminLIst');
+    Route::get('admin/blog-edit/{id}',[BlogController::class,'blogAdminEdit'])->name('adminBlogEdit');
+    Route::get('admin/blog-update/{id}',[BlogController::class,'blogAdminUpdate'])->name('adminBlogUpdate');
 });
 
 
